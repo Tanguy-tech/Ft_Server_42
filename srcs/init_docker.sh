@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    init_docker.sh                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/01/20 10:30:40 by tbillon           #+#    #+#              #
+#    Updated: 2021/01/20 10:30:41 by tbillon          ###   ########lyon.fr    #
+#                                                                              #
+# **************************************************************************** #
+
 # https://github.com/alexandregv/42toolbox
 
 # Ensure USER variabe is set
