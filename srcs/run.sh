@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 10:31:13 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/20 10:31:31 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/21 10:30:48 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ mkdir /var/www/mywebsite && touch /var/www/mywebsite/index.php #génère la crea
 echo "<?php phpinfo(); ?>" >> /var/www/mywebsite/index.php
 
 #Configurate NGINX
-mv ./tmp/nginx-conf /etc/nginx/sites-available/mywebsite
+mv ./nginx/nginx.conf /etc/nginx/sites-available/mywebsite
 ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/mywebsite
 rm -rf /etc/nginx/sites-enabled/default
 
@@ -28,9 +28,10 @@ rm -rf /etc/nginx/sites-enabled/default
 cd /etc/nginx
 mkdir ssl
 cd ssl/
-openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/mywebsite.pem -keyout /etc/nginx/ssl/mywebsite.key -subj 'C=FR/ST=Auvergne-Rhone-Alpes/L=Lyon/O=42shcool/OU=tbillon/CN=mywebsite/emailAdress=tbillon@student.42lyon.fr'
+openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/mywebsite.pem -keyout /etc/nginx/ssl/mywebsite.key -subj '//C=FR/ST=Auvergne-Rhone-Alpes/L=Lyon/O=42shcool/OU=tbillon/CN=mywebsite/emailAdress=tbillon@student.42lyon.fr'
 
 #Configurate MYSQL
+service mysql start
 echo "CREATE DATABASE wordpress;" | mysql -u root --skip-password #Crée uen base de donne mysql avec MariaDB nommé wordpress (-u custom user --ski-password saute l'etape mdp)
 echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost' WITH GRANT OPTION;" | mysql -u root --skip-password #Donne tous le acces (WITJ GRANT OPTION, a user can edit the permission for other users)
 echo "update mysql.user set plugin='mysql_native_password' where user='root';" | mysql -u root --skip-password #Pour etre capable de se connecter avec un mot de passe
@@ -45,9 +46,9 @@ mv ./tmp/wp-config.php /var/www/mywebsite/wordpress_files #Déplace le fichier d
 
 #Download and setup PhpMyadmin
 mkdir /var/www/mywebsite/phpmyadmin #Crée un dossier phpmyadmin dans le dossier mywebsite
-wget -c https://files.phpmyadmin.net/phpMyAdmin/5.1.0-rc1/phpMyAdmin-5.1.0-rc1-all-languages.zip #Télécharge la derniere version de PhpMyAdmin(flag -c -> continue de telecharger un fichier commence precedement)
-tar -xvzf phpMyAdmin-5.1.0-rc1-all-languages.tar.gz --strip-components 1 -C /var/www/mywebsite/phpmyadmin #Extrait fichier téléchargé (--strip-components 1 extrai le fichier puis l'envoie dans le parametre 1 du path suivant, ici /phpmyadmin)
-mv ./tmp/config.myconfig.php /var/www/mywebsite/phpmyadmin/config.inc.php #Déplace config.myconfig.php en créant un fichier config.inc.php dans le dossier phpmyadmin
+wget -c https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-all-languages.tar.gz #Télécharge la derniere version de PhpMyAdmin(flag -c -> continue de telecharger un fichier commence precedement)
+tar -xvf phpMyAdmin-5.0.4-all-languages.tar.gz --strip-components 1 -C /var/www/mywebsite/phpmyadmin #Extrait fichier téléchargé (--strip-components 1 extrai le fichier puis l'envoie dans le parametre 1 du path suivant, ici /phpmyadmin)
+mv phpmyadmin.inc.php /var/www/mywebsite/phpmyadmin/config.inc.php #Déplace config.myconfig.php en créant un fichier config.inc.php dans le dossier phpmyadmin
 
 service php7.3-fpm start
 service nginx start
