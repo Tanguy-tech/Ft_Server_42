@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 10:31:13 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/21 10:30:48 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/21 11:50:08 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ mkdir /var/www/mywebsite && touch /var/www/mywebsite/index.php #génère la crea
 echo "<?php phpinfo(); ?>" >> /var/www/mywebsite/index.php
 
 #Configurate NGINX
-mv ./nginx/nginx.conf /etc/nginx/sites-available/mywebsite
-ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/mywebsite
+mv ./tmp/nginx/nginx.conf /etc/nginx/sites-available/mywebsite
+ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/mywebsite #Crée un lien symbolic via -sect	
 rm -rf /etc/nginx/sites-enabled/default
 
 #Configurate Self-Signed SSL Certificate
