@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 10:31:13 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/22 10:26:00 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/22 11:06:32 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ chown -R www-data /var/www/* #permet un changement de proprietaire -> autorise w
 chmod -R 755 /var/www/* #ouvre les droits complet au proprietaire, sans ecriture aux groupes et autres
 
 #Generate website folder
-mkdir /var/www/mywebsite && touch /var/www/mywebsite/index.php #génère la creation d'un nouveau dossier contenant les dossiers du site web 
-echo "<?php phpinfo(); ?>" >> /var/www/mywebsite/index.php
+mkdir /var/www/mywebsite && touch /var/www/mywebsite/index.html #génère la creation d'un nouveau dossier contenant les dossiers du site web 
+cp ../../index.html /var/www/mywebsite/index.html
 
 #Configurate Self-Signed SSL Certificate
 cd /etc/nginx

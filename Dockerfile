@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 08:33:05 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/22 10:24:39 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/22 10:50:20 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ COPY ./srcs/run.sh ./
 COPY ./srcs/nginx/nginx.conf ./tmp/nginx.conf
 COPY ./srcs/phpmyadmin/phpmyadmin.inc.php ./tmp/phpmyadmin.inc.php
 COPY ./srcs/wordpress/wp-config.php ./tmp/wp-config.php
+COPY ./srcs/index.html ./
 
 EXPOSE 80 443
 
