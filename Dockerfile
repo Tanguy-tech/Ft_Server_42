@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 08:33:05 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/22 10:01:21 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/22 10:24:39 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,4 +41,4 @@ COPY ./srcs/wordpress/wp-config.php ./tmp/wp-config.php
 
 EXPOSE 80 443
 
-ENTRYPOINT bash run.sh
+ENTRYPOINT ["bash", "run.sh"]

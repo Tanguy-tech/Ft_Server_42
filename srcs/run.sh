@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 10:31:13 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/22 09:40:48 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/22 10:26:00 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,4 +53,4 @@ mv phpmyadmin.inc.php /var/www/mywebsite/phpmyadmin/config.inc.php #Déplace con
 
 service php7.3-fpm start
 service nginx restart
-#bash
+bash
