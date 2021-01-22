@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 08:33:05 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/21 09:59:37 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/22 10:01:21 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,12 @@ RUN apt-get -y install wget
 #INSTALL SSL
 RUN apt install openssl
 
-ADD ./srcs/init_docker.sh ./
-ADD ./srcs/run.sh ./
-ADD ./srcs/phpmyadmin/phpmyadmin.inc.php ./tmp/phpmyadmin.inc.php
-ADD ./srcs/wordpress/wp-config.php ./tmp/wp-config.php
+COPY ./srcs/init_docker.sh ./
+COPY ./srcs/run.sh ./
+COPY ./srcs/nginx/nginx.conf ./tmp/nginx.conf
+COPY ./srcs/phpmyadmin/phpmyadmin.inc.php ./tmp/phpmyadmin.inc.php
+COPY ./srcs/wordpress/wp-config.php ./tmp/wp-config.php
 
-CMD bash run.sh
+EXPOSE 80 443
+
+ENTRYPOINT bash run.sh
