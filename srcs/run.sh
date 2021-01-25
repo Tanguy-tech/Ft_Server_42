@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 10:31:13 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/25 11:51:27 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/25 13:30:53 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@ cp /var/www/html/index.nginx-debian.html /var/www/mywebsite/nginx/index.nginx-de
 
 #Configurate MYSQL
 service mysql start
-echo "CREATE DATABASE wordpress;" | mysql -u root --skip-password #Crée uen base de donne mysql avec MariaDB nommé wordpress (-u custom user --ski-password saute l'etape mdp)
-echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost' WITH GRANT;" | mysql -u root --skip-password #Donne tous le acces (WITJ GRANT OPTION, a user can edit the permission for other users)
-echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('password');" | mysql -u root --skip-password #Pour etre capable de se connecter avec un mot de passe
-echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password #Facultatif car Mysql remarque les changements quand il y en a et recharge les GRANTS (autorisations)
+echo "CREATE DATABASE wordpress;" | mysql -u root #Crée uen base de donne mysql avec MariaDB nommé wordpress (-u custom user --ski-password saute l'etape mdp)
+echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost';" | mysql -u root #Donne tous le acces (WITJ GRANT OPTION, a user can edit the permission for other users)
+echo "FLUSH PRIVILEGES;" | mysql -u root #Facultatif car Mysql remarque les changements quand il y en a et recharge les GRANTS (autorisations)
+echo "update mysql.user set plugin='mysql_native_password' where user='root';" | mysql -u root
 
 #Download and setup Wordpress
 wget https://wordpress.org/latest.tar.gz #wget télécharge la derniere version de wordpress
