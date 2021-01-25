@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    wp-config.php                                      :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/01/20 10:30:19 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/20 10:30:22 by tbillon          ###   ########lyon.fr    #
-#                                                                              #
-# **************************************************************************** #
-
 <?php
  /**
  * The base configuration for WordPress
@@ -38,7 +26,7 @@ define( 'DB_NAME', 'wordpress' );
 define( 'DB_USER', 'root' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'password' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
