@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 08:33:05 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/25 09:42:23 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/25 11:24:14 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ RUN apt-get -y install php7.3-mysql php7.3 php7.3-fpm php7.3-cli php7.3-mbstring
 
 #INSTALL NGINX
 RUN apt-get -y install nginx
+
+#INSTALL VIM
+RUN apt-get -y install vim
 
 #INSTALL WGET
 RUN apt-get -y install wget

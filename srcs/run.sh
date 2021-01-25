@@ -6,7 +6,7 @@
 #    By: tbillon <tbillon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/20 10:31:13 by tbillon           #+#    #+#              #
-#    Updated: 2021/01/25 10:06:42 by tbillon          ###   ########lyon.fr    #
+#    Updated: 2021/01/25 11:51:27 by tbillon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,13 @@ mv ./tmp/nginx.conf /etc/nginx/sites-available/mywebsite
 ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/mywebsite #Crée un lien symbolic via -sect	
 rm -rf /etc/nginx/sites-enabled/default 
 mkdir /var/www/mywebsite/nginx
-mv /var/www/html/index.nginx-debian.html /var/www/mywebsite/nginx/index.nginx-debian.html
+cp /var/www/html/index.nginx-debian.html /var/www/mywebsite/nginx/index.nginx-debian.html
 
 #Configurate MYSQL
 service mysql start
 echo "CREATE DATABASE wordpress;" | mysql -u root --skip-password #Crée uen base de donne mysql avec MariaDB nommé wordpress (-u custom user --ski-password saute l'etape mdp)
 echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost' WITH GRANT;" | mysql -u root --skip-password #Donne tous le acces (WITJ GRANT OPTION, a user can edit the permission for other users)
-echo "SET PASSWORD FOR root@localhost = PASSWORD('password');" | mysql -u root --skip-password #Pour etre capable de se connecter avec un mot de passe
+echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('password');" | mysql -u root --skip-password #Pour etre capable de se connecter avec un mot de passe
 echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password #Facultatif car Mysql remarque les changements quand il y en a et recharge les GRANTS (autorisations)
 
 #Download and setup Wordpress
